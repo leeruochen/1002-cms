@@ -51,7 +51,7 @@ int main(void)
             case 7:
                 saveRecords(head);
             case 8:
-                bubbleSort(head);
+                mergeSort(head);
             case 9:
                 summaryStats(head);
         }

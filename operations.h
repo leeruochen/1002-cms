@@ -19,7 +19,7 @@ void queryStudent(struct node* head); // function to query a specific student by
 void updateStudent(struct node* head); // function to update the value for a given record
 void deleteStudent(struct node* head); // function to delete a record from the database
 void saveRecords(struct node* head); // function to save all the records to the database file
-void bubbleSort(struct node* head); // function for sorting student records
+void mergeSort(struct node* head); // function for sorting student records
 void summaryStats(struct node* head); // function for summary of database
 
 #endif

@@ -26,7 +26,7 @@ void deleteStudent(struct node* head) {}
 
 void saveRecords(struct node* head) {}
 
-void bubbleSort(struct node* head) {}
+void mergeSort(struct node* head) {}
 
 void summaryStats(struct node* head) {}
 
