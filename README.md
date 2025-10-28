@@ -21,3 +21,10 @@
 #### data structure for our records
 - linked list
 - binary tree (more complex but more efficient)
+
+
+to run
+```bash
+gcc main.c operations.c -o program
+./program.exe
+```
