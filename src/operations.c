@@ -67,9 +67,10 @@ void showAll(Node* root) {
     if (root == NULL) {
         return;
     }
+    showAll(root->left);
     printf("ID: %-10d Name: %-15s Programme: %-22s Mark: %.1f\n", 
             root->id, root->data->name, root->data->programme, root->data->mark);
-    showAll(root->left);
+    
     showAll(root->right);
 }
 

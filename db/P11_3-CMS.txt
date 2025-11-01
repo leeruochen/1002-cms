@@ -4,5 +4,29 @@ Authors: Assistant Prof Oran Zane Devilly
 Table Name: StudentRecords
 ID	Name		Programme		Mark
 2301234	Joshua Chen	Software Engineering	70.5
-2201234	Isaac Teo	Computer Science	63.4
+2201234	Isaac Teo	Information Security	63.4
 2304567	John Levoy	Digital Supply Chain	85.9
+2301454	David Tan	Software Engineering	70.5
+2201321	Kimberly 	Information Security	63.4
+2304145	Simon Lim	Digital Supply Chain	85.9
+2303455	Kira Tan	Software Engineering	70.5
+2201677	Taylor Lim	Information Security	63.4
+2304742	Declan Rice	Digital Supply Chain	85.9
+2303464	Andrew Dru	Software Engineering	70.5
+2201235	Dewey Po	Information Security	63.4
+2306576	Brandon Lim	Digital Supply Chain	85.9
+2306786	Edwin Tan	Software Engineering	70.5
+2207897	Edward Lim	Information Security	63.4
+2306708	Mile Turner	Digital Supply Chain	85.9
+2303567	Sally Lim	Software Engineering	70.5
+2202569	Ava Tane	Information Security	63.4
+2305369	Mille Mills	Digital Supply Chain	85.9
+2306583	Roxanne Lol	Software Engineering	70.5
+2201134	Anna Poh	Information Security	63.4
+2304346	Maryam Yam	Digital Supply Chain	85.9
+2301428	Paige Age	Software Engineering	70.5
+2201568	Jacqueline	Information Security	63.4
+2304134	Abby Bye	Digital Supply Chain	85.9
+2306344	Constance	Software Engineering	70.5
+2204366	Myred Myr	Information Security	62.1
+2304563	Johnathan	Digital Supply Chain	85.9
