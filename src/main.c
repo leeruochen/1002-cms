@@ -37,7 +37,7 @@ int main(void)
 
         switch (choice) {
             case 1:
-                openDatabase();
+                openDatabase(root);
             case 2:
                 showAll(root);
             case 3:

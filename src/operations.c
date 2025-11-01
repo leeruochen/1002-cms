@@ -3,7 +3,7 @@
 #include <string.h>
 #include "operations.h"
 
-Node* createNode(struct node* head, int ID, char name[], char programme[], float mark)
+Node* createNode(Node* head, int ID, char name[], char programme[], float mark)
 {
     Node* newNode = (Node*)malloc(sizeof(Node));
     newNode->ID = ID;
@@ -15,39 +15,42 @@ Node* createNode(struct node* head, int ID, char name[], char programme[], float
 }
 
 
-void openDatabase() {
+void openDatabase(root) {
+    FILE *fptr;
+
+    fptr = fopen("../db/P11_3-CMS.txt", "r");
+
+}
+
+void showAll(Node* head) {
     //write your algorithms here
 }
 
-void showAll(struct node* head) {
+void insertRecord(Node* head) {
     //write your algorithms here
 }
 
-void insertRecord(struct node* head) {
+void queryStudent(Node* head) {
     //write your algorithms here
 }
 
-void queryStudent(struct node* head) {
+void updateStudent(Node* head) {
     //write your algorithms here
 }
 
-void updateStudent(struct node* head) {
+void deleteStudent(Node* head) {
     //write your algorithms here
 }
 
-void deleteStudent(struct node* head) {
+void saveRecords(Node* head) {
     //write your algorithms here
 }
 
-void saveRecords(struct node* head) {
+void mergeSort(Node* head) {
     //write your algorithms here
 }
 
-void mergeSort(struct node* head) {
-    //write your algorithms here
-}
-
-void summaryStats(struct node* head) {
+void summaryStats(Node* head) {
     //write your algorithms here
 }
 
