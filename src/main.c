@@ -37,11 +37,32 @@ int main(void)
 
         switch (choice) {
             case 1:
-                openDatabase(root);
+                openDatabase("../db/P11_3-CMS.txt");
             case 2:
                 showAll(root);
             case 3:
-                insertRecord(root);
+                int id;
+                char name[StringLimit];
+                char programme[StringLimit];
+                float mark;
+                
+                printf("Please enter the Student's ID:\n");
+                scanf("%d", &id);
+                printf("Please enter the Student's Name:\n");
+                fgets(name, StringLimit, stdin);
+                name[strcspn(name, "\n")] = '\0';
+                printf("Please enter the Student's Programme:\n");
+                fgets(programme, StringLimit, stdin);
+                programme[strcspn(programme, "\n")] = '\0';
+                printf("Please enter the Student's Mark:\n");
+                scanf("%f", &mark);
+
+                StudentData* newData = (StudentData*)malloc(sizeof(StudentData));
+                newData->name = strdup(name);
+                newData->programme = strdup(programme);
+                newData->mark = mark;
+
+                root = insertRecord(root, id, newData);
             case 4:
                 queryStudent(root);
             case 5:

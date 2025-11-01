@@ -1,21 +1,26 @@
 #ifndef OPERATIONS_H
 #define OPERATIONS_H
+
 #define StringLimit 50
 
-typedef struct Node { // node structure for linked list to store student information
-    int ID;
-    char name[StringLimit];
-    char programme[StringLimit];
+typedef struct StudentData { // data struct
+    char* name;
+    char* programme;
     float mark;
+} StudentData;
+
+typedef struct Node { // binary tree node
+    int ID;
+    StudentData* data; 
     struct Node* left;
     struct Node* right;
 } Node;
 
-Node* createNode(Node* head, int ID, char name[], char programme[], float mark); 
+Node* createNode(int ID, StudentData* data); 
 
-void openDatabase(root); // function to open database file and read in all records
+Node* openDatabase(const char* filename); // function to open database file and read in all records
 void showAll(Node* head); // function to show all the current records
-void insertRecord(Node* head); // function to add a new record to the database
+Node* insertRecord(Node* root, int id, StudentData* data); // function to add a new record to the database
 void queryStudent(Node* head); // function to query a specific student by ID
 void updateStudent(Node* head); // function to update the value for a given record
 void deleteStudent(Node* head); // function to delete a record from the database
