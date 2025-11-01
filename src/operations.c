@@ -194,6 +194,16 @@ void mergeSort(Node* root) {
 void summaryStats(Node* root) {
     //write your algorithms here
 }
+Node* findStudent(Node* root, int id) {
+    if (root == NULL || root->id == id)
+        return root;  // Found the node or tree is empty
+
+    // Recurse through the left or right subtrees
+    if (id < root->id)
+        return findStudent(root->left, id);
+    else
+        return findStudent(root->right, id);
+}
 
 void freeTree(Node* root) {
     if (root == NULL) {

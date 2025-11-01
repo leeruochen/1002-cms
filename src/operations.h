@@ -17,7 +17,6 @@ typedef struct Node { // binary tree node
 } Node;
 
 Node* createNode(int ID, StudentData* data); 
-
 Node* openDatabase(const char* filename); // function to open database file and read in all records
 void showAll(Node* root); // function to show all the current records
 Node* insertRecord(Node* root, int id, StudentData* data); // function to add a new record to the database
@@ -31,5 +30,6 @@ void saveRecords(Node* root); // function to save all the records to the databas
 void mergeSort(Node* root); // function for sorting student records
 void summaryStats(Node* root); // function for summary of database
 void freeTree(Node* root); // function to free all allocated memory for the binary tree
+Node* findStudent(Node* root, int id);//Function to find record by ID used by delete and update functions
 
 #endif
