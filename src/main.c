@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "operations.h"
 
 
@@ -12,7 +13,7 @@ int main(void)
     Node* root = openDatabase("../db/P11_3-CMS.txt"); // Start with empty tree
     
     do {
-        printf("Please choose from the following list of instructions.\n\n");
+        printf("\nPlease choose from the following list of instructions.\n\n");
         printf("1. Show all records.\n");
         printf("2. Insert a new record.\n");
         printf("3. Query a student record by ID.\n");
@@ -41,6 +42,10 @@ int main(void)
                 break;
             case 2:
                 int new_id = getStudentIdInput();
+                if (checkDuplicateID(root, new_id)) {
+                    printf("Student Record for ID:%d already exists! Cannot insert duplicate ID.\n", new_id);
+                    break;
+                }
                 StudentData* newData = createStudentData();
                 root = insertRecord(root, new_id, newData);
                 break;

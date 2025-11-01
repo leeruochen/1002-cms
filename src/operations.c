@@ -4,7 +4,7 @@
 #include <ctype.h>
 #include "operations.h"
 
-
+// ---------- Function to build the database -----------
 Node* createNode(int id, StudentData* data) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     newNode->id = id;
@@ -13,8 +13,10 @@ Node* createNode(int id, StudentData* data) {
     newNode->right = NULL;
     return newNode;
 }
+// -----------------------------------------------------
 
 
+// ---------- Main Use Functions -----------
 Node* openDatabase(const char* filename) {
     FILE* fptr = fopen(filename, "r");
     if (fptr == NULL) {
@@ -83,9 +85,50 @@ Node* insertRecord(Node* root, int id, StudentData* data) {
     } else if (id > root->id) { // if id is greater than current node's id, go right
         root->right = insertRecord(root->right, id, data); // Recursive call to right subtree
     } else { // if id already exists, do not insert duplicate
-        printf("Student Record for %d already exists! Skipping record.", id);
+        printf("Student Record for ID:%d already exists! Skipping record.\n", id);
     }
     return root; // return the root of tree
+}
+
+
+void queryStudent(Node* root) {
+    //write your algorithms here
+}
+
+void updateStudent(Node* root) {
+    //write your algorithms here
+}
+
+void deleteStudent(Node* root) {
+    //write your algorithms here
+}
+
+void saveRecords(Node* root) {
+    //write your algorithms here
+}
+
+void mergeSort(Node* root) {
+    //write your algorithms here
+}
+
+void summaryStats(Node* root) {
+    //write your algorithms here
+}
+// ---------------------------------------------
+
+
+// ----------- General Use Functions -----------
+int checkDuplicateID(Node* root, int id) {
+    if (root == NULL) {
+        return 0; // ID not found
+    }
+    if (id == root->id) {
+        return 1; // ID found
+    } else if (id < root->id) {
+        return checkDuplicateID(root->left, id); // Search in left subtree
+    } else {
+        return checkDuplicateID(root->right, id); // Search in right subtree
+    }
 }
 
 StudentData* createStudentData() {
@@ -162,29 +205,6 @@ int checkValidInteger(const char* int_str) {
     return 1;
 }
 
-void queryStudent(Node* root) {
-    //write your algorithms here
-}
-
-void updateStudent(Node* root) {
-    //write your algorithms here
-}
-
-void deleteStudent(Node* root) {
-    //write your algorithms here
-}
-
-void saveRecords(Node* root) {
-    //write your algorithms here
-}
-
-void mergeSort(Node* root) {
-    //write your algorithms here
-}
-
-void summaryStats(Node* root) {
-    //write your algorithms here
-}
 Node* findStudent(Node* root, int id) {
     if (root == NULL || root->id == id)
         return root;  // Found the node or tree is empty
@@ -223,3 +243,4 @@ void freeTree(Node* root) {
     free(root->data);
     free(root);
 }
+// ---------------------------------------------
