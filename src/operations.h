@@ -10,7 +10,7 @@ typedef struct StudentData { // data struct
 } StudentData;
 
 typedef struct Node { // binary tree node
-    int ID;
+    int id;
     StudentData* data; 
     struct Node* left;
     struct Node* right;

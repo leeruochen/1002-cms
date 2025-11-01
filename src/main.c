@@ -8,22 +8,21 @@ int main(void)
 {
     int choice;
     int scanf_check;
-    Node* root = NULL; // Start with empty list
     printf("Welcome to the Class Management System.\n\n");
+    Node* root = openDatabase("../db/P11_3-CMS.txt"); // Start with empty tree
     
     do {
         printf("Please choose from the following list of instructions.\n\n");
-        printf("1. Open the database.\n");
-        printf("2. Show all records.\n");
-        printf("3. Insert a new record.\n");
-        printf("4. Query a student record by ID.\n");
-        printf("5. Update an existing record.\n");
-        printf("6. Delete an existing record.\n");
-        printf("7. Save all records into the database.\n");
-        printf("8. Sort the student records.\n");
-        printf("9. View the summary of the records.\n");
-        printf("10. Exit the program.\n\n");
-        printf("Enter your choice (1-10): ");
+        printf("1. Show all records.\n");
+        printf("2. Insert a new record.\n");
+        printf("3. Query a student record by ID.\n");
+        printf("4. Update an existing record.\n");
+        printf("5. Delete an existing record.\n");
+        printf("6. Save all records into the database.\n");
+        printf("7. Sort the student records.\n");
+        printf("8. View the summary of the records.\n");
+        printf("9. Exit the program.\n\n");
+        printf("Enter your choice (1-9): ");
         scanf_check = scanf("%d", &choice);
 
         if (scanf_check == 0){
@@ -31,16 +30,15 @@ int main(void)
             while (getchar() != '\n');
             continue;
         }
-        if (choice < 1 || choice > 10) {
+        if (choice < 1 || choice > 9) {
             printf("Invalid choice. Please try again.\n\n");
         }
 
         switch (choice) {
             case 1:
-                openDatabase("../db/P11_3-CMS.txt");
-            case 2:
                 showAll(root);
-            case 3:
+                break;
+            case 2:
                 int id;
                 char name[StringLimit];
                 char programme[StringLimit];
@@ -63,20 +61,27 @@ int main(void)
                 newData->mark = mark;
 
                 root = insertRecord(root, id, newData);
-            case 4:
+                break;
+            case 3:
                 queryStudent(root);
-            case 5:
+                break;
+            case 4:
                 updateStudent(root);
-            case 6:
+                break;
+            case 5:
                 deleteStudent(root);
-            case 7:
+                break;
+            case 6:
                 saveRecords(root);
-            case 8:
+                break;
+            case 7:
                 mergeSort(root);
-            case 9:
+                break;
+            case 8:
                 summaryStats(root);
+                break;
         }
-    } while (choice != 10);
+    } while (choice != 9);
 
     printf("Thank you for using the Class Management System.\n");
 

@@ -4,9 +4,9 @@
 #include "operations.h"
 
 
-Node* createNode(int ID, StudentData* data) {
+Node* createNode(int id, StudentData* data) {
     Node* newNode = (Node*)malloc(sizeof(Node));
-    newNode->ID = ID;
+    newNode->id = id;
     newNode->data = data;
     newNode->left = NULL;
     newNode->right = NULL;
@@ -48,7 +48,7 @@ Node* openDatabase(const char* filename) {
 
         token = strtok(NULL, delimiter);
         if (token == NULL) continue;
-        float mark = atof(token);
+        float mark = atof(token); // ascii to float
 
         StudentData* newData = (StudentData*)malloc(sizeof(StudentData));
         newData->name = name;
@@ -60,15 +60,30 @@ Node* openDatabase(const char* filename) {
     fclose(fptr);
     printf("Data loaded successfully.\n");
     return root;
-
 }
 
-void showAll(Node* head) {
-    //write your algorithms here
+void showAll(Node* root) {
+    if (root == NULL) {
+        return;
+    }
+    printf("ID: %d Name: %-15s Programme: %-22s Mark: %.1f\n", 
+            root->id, root->data->name, root->data->programme, root->data->mark);
+    showAll(root->left);
+    showAll(root->right);
 }
 
 Node* insertRecord(Node* root, int id, StudentData* data) {
-    //write your algorithms here
+    if (root == NULL) {
+        return createNode(id, data); // Create new node if tree is empty or at leaf position
+    }
+    if (id < root->id) { // if id is less than current node's id, go left
+        root->left = insertRecord(root->left, id, data); // Recursive call to left subtree
+    } else if (id > root->id) { // if id is greater than current node's id, go right
+        root->right = insertRecord(root->right, id, data); // Recursive call to right subtree
+    } else { // if id already exists, do not insert duplicate
+        printf("Student Record for %d already exists! Skipping record.", id);
+    }
+    return root; // return the root of tree
 }
 
 void queryStudent(Node* head) {
