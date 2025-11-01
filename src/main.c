@@ -63,7 +63,7 @@ int main(void)
                         getchar(); // clear newline
                         scanf("%c", &confirm);
                     if (tolower(confirm) == 'y') {
-                        // root = deleteStudent(root, id);
+                        // root = deleteStudent(root, id); not done yet, just uncomment it when you finish the deleteStudent function
                         printf("Student deleted successfully.\n");
                     } else {
                         printf("Deletion cancelled.\n");
