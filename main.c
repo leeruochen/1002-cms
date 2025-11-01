@@ -8,12 +8,12 @@ int main(void)
 {
     int choice;
     int scanf_check;
-    struct node* head = NULL; // Start with empty list
+    Node* root = NULL; // Start with empty list
     printf("Welcome to the Class Management System.\n\n");
     
     do {
         printf("Please choose from the following list of instructions.\n\n");
-        printf("1. Open the database\n");
+        printf("1. Open the database.\n");
         printf("2. Show all records.\n");
         printf("3. Insert a new record.\n");
         printf("4. Query a student record by ID.\n");
@@ -39,21 +39,21 @@ int main(void)
             case 1:
                 openDatabase();
             case 2:
-                showAll(head);
+                showAll(root);
             case 3:
-                insertRecord(head);
+                insertRecord(root);
             case 4:
-                queryStudent(head);
+                queryStudent(root);
             case 5:
-                updateStudent(head);
+                updateStudent(root);
             case 6:
-                deleteStudent(head);
+                deleteStudent(root);
             case 7:
-                saveRecords(head);
+                saveRecords(root);
             case 8:
-                mergeSort(head);
+                mergeSort(root);
             case 9:
-                summaryStats(head);
+                summaryStats(root);
         }
     } while (choice != 10);
 

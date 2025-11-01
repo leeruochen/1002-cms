@@ -1,32 +1,53 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "operations.h"
 
-struct node* insertAtHead(struct node* head, int ID, char name[], char programme[], float mark)
+Node* createNode(struct node* head, int ID, char name[], char programme[], float mark)
 {
-    struct node* newNode = malloc(sizeof(struct node));
+    Node* newNode = (Node*)malloc(sizeof(Node));
     newNode->ID = ID;
     strcpy(newNode->name, name);
     strcpy(newNode->programme, programme);
-    newNode->mark = mark;
-    newNode->next = head;
+    newNode->left = NULL;
+    newNode->right = NULL;
     return newNode;
 }
 
 
-void openDatabase() {}
+void openDatabase() {
+    //write your algorithms here
+}
 
-void showAll(struct node* head) {}
+void showAll(struct node* head) {
+    //write your algorithms here
+}
 
-void insertRecord(struct node* head) {}
+void insertRecord(struct node* head) {
+    //write your algorithms here
+}
 
-void queryStudent(struct node* head) {}
+void queryStudent(struct node* head) {
+    //write your algorithms here
+}
 
-void updateStudent(struct node* head) {}
+void updateStudent(struct node* head) {
+    //write your algorithms here
+}
 
-void deleteStudent(struct node* head) {}
+void deleteStudent(struct node* head) {
+    //write your algorithms here
+}
 
-void saveRecords(struct node* head) {}
+void saveRecords(struct node* head) {
+    //write your algorithms here
+}
 
-void mergeSort(struct node* head) {}
+void mergeSort(struct node* head) {
+    //write your algorithms here
+}
 
-void summaryStats(struct node* head) {}
+void summaryStats(struct node* head) {
+    //write your algorithms here
+}
 

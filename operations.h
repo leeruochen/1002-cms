@@ -2,15 +2,16 @@
 #define OPERATIONS_H
 #define StringLimit 50
 
-struct node { // node structure for linked list to store student information
+typedef struct Node { // node structure for linked list to store student information
     int ID;
     char name[StringLimit];
     char programme[StringLimit];
     float mark;
-    struct node *next;
-};
+    struct Node* left;
+    struct Node* right;
+} Node;
 
-struct node* insertAtHead(struct node* head, int ID, char name[], char programme[], float mark); // function to insert a new record at the head of the list
+struct node* createNode(struct node* head, int ID, char name[], char programme[], float mark); 
 
 void openDatabase(); // function to open database file and read in all records
 void showAll(struct node* head); // function to show all the current records
