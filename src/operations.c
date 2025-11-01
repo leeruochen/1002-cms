@@ -243,4 +243,9 @@ void freeTree(Node* root) {
     free(root->data);
     free(root);
 }
+
+void hold(void) {
+    printf("Press Enter to return to the menu.");
+    while (getchar() != '\n' && getchar() != EOF);
+}
 // ---------------------------------------------

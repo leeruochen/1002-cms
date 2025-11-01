@@ -42,7 +42,8 @@ int checkValidString(const char* str); // function to check if a string is valid
 int checkValidInteger(const char* str); // function to check if an integer is valid
 StudentData* createStudentData(); // function to create a new student data record
 void freeTree(Node* root); // function to free all allocated memory for the binary tree
-Node* findStudent(Node* root, int id);//Function to find record by ID used by delete and update functions
+Node* findStudent(Node* root, int id);//function to find record by ID used by delete and update functions
+void hold(void);//function to hold the screen until user presses enter
 // ---------------------------------------------
 
 

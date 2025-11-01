@@ -61,11 +61,11 @@ int main(void)
                 if (findStudent(root, id) == NULL) {
                     printf("Error: Student ID %d not found.\n", id);
                 } else {
-                        char confirm;
+                        char confirm[StringLimit];
                         printf("Are you sure you want to delete student with ID %d? (y/n): ", id);
-                        getchar(); // clear newline
-                        scanf("%c", &confirm);
-                    if (tolower(confirm) == 'y') {
+                        fgets(confirm, StringLimit, stdin);
+                        confirm[strcspn(confirm, "\n")] = '\0';
+                    if (tolower(confirm[0]) == 'y') {
                         // root = deleteStudent(root, id); not done yet, just uncomment it when you finish the deleteStudent function
                         printf("Student deleted successfully.\n");
                     } else {
@@ -82,6 +82,9 @@ int main(void)
             case 8:
                 summaryStats(root);
                 break;
+        }
+        if (choice_int != 9 && choice_int >= 1 && choice_int <= 8) {
+            hold();
         }
     } while (choice_int != 9);
 
