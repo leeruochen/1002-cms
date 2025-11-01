@@ -88,21 +88,11 @@ Node* insertRecord(Node* root, int id, StudentData* data) {
     return root; // return the root of tree
 }
 
-StudentData* createStudentData(int* id) {
-    char temp_id[StringLimit];
+StudentData* createStudentData() {
     char name[StringLimit];
     char programme[StringLimit];
     char temp_mark[StringLimit];
-    do {
-        printf("Please enter the Student's ID:\n");
-        fgets(temp_id, StringLimit, stdin);
-        temp_id[strcspn(temp_id, "\n")] = '\0';
-        if (!checkValidInteger(temp_id)) {
-            printf("The ID entered is invalid. Please try again.\n");
-        } else {
-            *id = atoi(temp_id);
-        }
-    } while (!checkValidInteger(temp_id));
+    char temp_id[StringLimit];
 
     do {
         printf("Please enter the Student's Name:\n");
@@ -204,6 +194,22 @@ Node* findStudent(Node* root, int id) {
         return findStudent(root->left, id);
     else
         return findStudent(root->right, id);
+}
+
+int getStudentIdInput() {
+    char temp_id[StringLimit];
+    int id;
+    do {
+        printf("Please enter the Student's ID:\n");
+        fgets(temp_id, StringLimit, stdin);
+        temp_id[strcspn(temp_id, "\n")] = '\0';
+        if (!checkValidInteger(temp_id)) {
+            printf("The ID entered is invalid. Please try again.\n");
+        } else {
+            id = atoi(temp_id);
+        }
+    } while (!checkValidInteger(temp_id));
+    return id;
 }
 
 void freeTree(Node* root) {

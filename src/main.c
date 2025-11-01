@@ -40,9 +40,9 @@ int main(void)
                 showAll(root);
                 break;
             case 2:
-                int id;
-                StudentData* newData = createStudentData(&id);
-                root = insertRecord(root, id, newData);
+                int new_id = getStudentIdInput();
+                StudentData* newData = createStudentData();
+                root = insertRecord(root, new_id, newData);
                 break;
             case 3:
                 queryStudent(root);
@@ -51,24 +51,22 @@ int main(void)
                 updateStudent(root);
                 break;
             case 5:
-                // int id;
-                // printf("Enter Student ID to delete: ");
-                // scanf("%d", &id);
+                int id = getStudentIdInput();
 
-                // if (findStudent(root, id) == NULL) {
-                //     printf("Error: Student ID %d not found.\n", id);
-                // } else {
-                //         char confirm;
-                //         printf("Are you sure you want to delete student with ID %d? (y/n): ", id);
-                //         getchar(); // clear newline
-                //         scanf("%c", &confirm);
-                //     if (tolower(confirm) == 'y') {
-                //         // root = deleteStudent(root, id); not done yet, just uncomment it when you finish the deleteStudent function
-                //         printf("Student deleted successfully.\n");
-                //     } else {
-                //         printf("Deletion cancelled.\n");
-                //     }
-                // }
+                if (findStudent(root, id) == NULL) {
+                    printf("Error: Student ID %d not found.\n", id);
+                } else {
+                        char confirm;
+                        printf("Are you sure you want to delete student with ID %d? (y/n): ", id);
+                        getchar(); // clear newline
+                        scanf("%c", &confirm);
+                    if (tolower(confirm) == 'y') {
+                        // root = deleteStudent(root, id); not done yet, just uncomment it when you finish the deleteStudent function
+                        printf("Student deleted successfully.\n");
+                    } else {
+                        printf("Deletion cancelled.\n");
+                    }
+                }
                 break;
             case 6:
                 saveRecords(root);
