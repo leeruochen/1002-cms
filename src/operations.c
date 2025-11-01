@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "operations.h"
 
 
@@ -66,7 +67,7 @@ void showAll(Node* root) {
     if (root == NULL) {
         return;
     }
-    printf("ID: %d Name: %-15s Programme: %-22s Mark: %.1f\n", 
+    printf("ID: %-10d Name: %-15s Programme: %-22s Mark: %.1f\n", 
             root->id, root->data->name, root->data->programme, root->data->mark);
     showAll(root->left);
     showAll(root->right);
@@ -86,27 +87,122 @@ Node* insertRecord(Node* root, int id, StudentData* data) {
     return root; // return the root of tree
 }
 
-void queryStudent(Node* head) {
+StudentData* createStudentData(int* id) {
+    char temp_id[StringLimit];
+    char name[StringLimit];
+    char programme[StringLimit];
+    char temp_mark[StringLimit];
+    do {
+        printf("Please enter the Student's ID:\n");
+        fgets(temp_id, StringLimit, stdin);
+        temp_id[strcspn(temp_id, "\n")] = '\0';
+        if (!checkValidInteger(temp_id)) {
+            printf("The ID entered is invalid. Please try again.\n");
+        } else {
+            *id = atoi(temp_id);
+        }
+    } while (!checkValidInteger(temp_id));
+
+    do {
+        printf("Please enter the Student's Name:\n");
+        fgets(name, StringLimit, stdin);
+        name[strcspn(name, "\n")] = '\0';
+        if (!checkValidString(name)) {
+            printf("The name entered is invalid. Please try again.\n");
+        }
+    } while (!checkValidString(name));
+
+    do {
+        printf("Please enter the Student's Programme:\n");
+        fgets(programme, StringLimit, stdin);
+        programme[strcspn(programme, "\n")] = '\0';
+        if (!checkValidString(programme)) {
+            printf("The programme entered is invalid. Please try again.\n");
+        }
+    } while (!checkValidString(programme));
+
+    int clear = 1;
+    do {
+        printf("Please enter the Student's Mark:\n");
+        fgets(temp_mark, StringLimit, stdin);
+        temp_mark[strcspn(temp_mark, "\n")] = '\0';
+
+        char* pend;
+        float temp_val = strtof(temp_mark, &pend);
+        if (pend == temp_mark || *pend != '\0') {
+            printf("The mark entered is invalid. Please try again.\n");
+        } else if (temp_val < 0.0 || temp_val > 100.0) {
+            printf("The mark entered is out of range. Please try again.\n");
+        } else {
+            clear = 0;
+        }
+    } while (clear == 1);
+
+    StudentData* newData = (StudentData*)malloc(sizeof(StudentData));
+    newData->name = strdup(name);
+    newData->programme = strdup(programme);
+    newData->mark = atof(temp_mark);
+    return newData;
+}
+
+int checkValidString(const char* str) {
+    if (str == NULL || strlen(str) == 0) {
+        return 0;
+    }
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (!isalpha(str[i]) && !isspace(str[i])) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int checkValidInteger(const char* int_str) {
+    if (int_str == NULL || strlen(int_str) == 0) {
+        return 0;
+    }
+
+    for (int i = 0; int_str[i] != '\0'; i++) {
+        if (!isdigit(int_str[i])) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+void queryStudent(Node* root) {
     //write your algorithms here
 }
 
-void updateStudent(Node* head) {
+void updateStudent(Node* root) {
     //write your algorithms here
 }
 
-void deleteStudent(Node* head) {
+void deleteStudent(Node* root) {
     //write your algorithms here
 }
 
-void saveRecords(Node* head) {
+void saveRecords(Node* root) {
     //write your algorithms here
 }
 
-void mergeSort(Node* head) {
+void mergeSort(Node* root) {
     //write your algorithms here
 }
 
-void summaryStats(Node* head) {
+void summaryStats(Node* root) {
     //write your algorithms here
 }
 
+void freeTree(Node* root) {
+    if (root == NULL) {
+        return;
+    }
+    freeTree(root->left);
+    freeTree(root->right);
+    free(root->data->name);
+    free(root->data->programme);
+    free(root->data);
+    free(root);
+}

@@ -6,8 +6,8 @@
 
 int main(void)
 {
-    int choice;
-    int scanf_check;
+    char choice[StringLimit];
+    int choice_int;
     printf("Welcome to the Class Management System.\n\n");
     Node* root = openDatabase("../db/P11_3-CMS.txt"); // Start with empty tree
     
@@ -23,43 +23,26 @@ int main(void)
         printf("8. View the summary of the records.\n");
         printf("9. Exit the program.\n\n");
         printf("Enter your choice (1-9): ");
-        scanf_check = scanf("%d", &choice);
+        fgets(choice, StringLimit, stdin);
+        choice[strcspn(choice, "\n")] = '\0';
+        choice_int = atoi(choice);
 
-        if (scanf_check == 0){
+        if (choice_int == 0){
             printf("Invalid choice. Please try again.\n\n");
             while (getchar() != '\n');
             continue;
         }
-        if (choice < 1 || choice > 9) {
+        if (choice_int < 1 || choice_int > 9) {
             printf("Invalid choice. Please try again.\n\n");
         }
 
-        switch (choice) {
+        switch (choice_int) {
             case 1:
                 showAll(root);
                 break;
             case 2:
                 int id;
-                char name[StringLimit];
-                char programme[StringLimit];
-                float mark;
-                
-                printf("Please enter the Student's ID:\n");
-                scanf("%d", &id);
-                printf("Please enter the Student's Name:\n");
-                fgets(name, StringLimit, stdin);
-                name[strcspn(name, "\n")] = '\0';
-                printf("Please enter the Student's Programme:\n");
-                fgets(programme, StringLimit, stdin);
-                programme[strcspn(programme, "\n")] = '\0';
-                printf("Please enter the Student's Mark:\n");
-                scanf("%f", &mark);
-
-                StudentData* newData = (StudentData*)malloc(sizeof(StudentData));
-                newData->name = strdup(name);
-                newData->programme = strdup(programme);
-                newData->mark = mark;
-
+                StudentData* newData = createStudentData(&id);
                 root = insertRecord(root, id, newData);
                 break;
             case 3:
@@ -81,7 +64,7 @@ int main(void)
                 summaryStats(root);
                 break;
         }
-    } while (choice != 9);
+    } while (choice_int != 9);
 
     printf("Thank you for using the Class Management System.\n");
 
