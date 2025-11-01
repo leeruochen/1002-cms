@@ -27,5 +27,6 @@ void deleteStudent(Node* head); // function to delete a record from the database
 void saveRecords(Node* head); // function to save all the records to the database file
 void mergeSort(Node* head); // function for sorting student records
 void summaryStats(Node* head); // function for summary of database
+Node* findStudent(Node* root, int id);//Function to find record by ID used by delete and update functions
 
 #endif

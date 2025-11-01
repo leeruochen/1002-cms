@@ -69,7 +69,24 @@ int main(void)
                 updateStudent(root);
                 break;
             case 5:
-                deleteStudent(root);
+                int id;
+                printf("Enter Student ID to delete: ");
+                scanf("%d", &id);
+
+                if (findStudent(root, id) == NULL) {
+                    printf("Error: Student ID %d not found.\n", id);
+                } else {
+                        char confirm;
+                        printf("Are you sure you want to delete student with ID %d? (y/n): ", id);
+                        getchar(); // clear newline
+                        scanf("%c", &confirm);
+                    if (tolower(confirm) == 'y') {
+                        root = deleteStudent(root, id);
+                        printf("Student deleted successfully.\n");
+                    } else {
+                        printf("Deletion cancelled.\n");
+                    }
+                }
                 break;
             case 6:
                 saveRecords(root);
